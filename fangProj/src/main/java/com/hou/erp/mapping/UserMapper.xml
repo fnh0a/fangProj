@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hou.erp.dao.IUserDao">
+	<resultMap id="BaseResultMap" type="com.hou.erp.pojo.User">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="user_name" property="userName" jdbcType="VARCHAR" />
+		<result column="password" property="password" jdbcType="VARCHAR" />
+		<result column="age" property="age" jdbcType="INTEGER" />
+	</resultMap>
+	<resultMap id="BaseWorkResultMap" type="com.hou.erp.pojo.WorkInfo">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="workername" property="workername" jdbcType="VARCHAR" />
+		<result column="tableNo" property="tableNo" jdbcType="VARCHAR" />
+		<result column="time" property="time" jdbcType="VARCHAR" />
+		<result column="startCode" property="startCode" jdbcType="VARCHAR" />
+		<result column="endCode" property="endCode" jdbcType="VARCHAR" />
+		<result column="weight" property="weight" jdbcType="VARCHAR" />
+		<result column="price" property="price" jdbcType="VARCHAR" />
+		<result column="total" property="total" jdbcType="VARCHAR" />
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+		
+	</resultMap>
+	<sql id="Basework_Column_List">
+		id,workername,tableNo,time,startCode,endCode,weight,price,total,remark
+	</sql>
+	<select id="selectAllInfo" resultMap="BaseWorkResultMap">
+		select
+		<include refid="Basework_Column_List" />
+		from workers_info order by createTime desc
+		<if test="start!=null and count!=null">
+                    limit #{start},#{count}
+            </if>
+	</select>
+	 <select id="total" resultType="int">
+            select count(*) from   workers_info      
+        </select>
+	<select id="selectInfoByMonth" parameterType="map" resultMap="BaseWorkResultMap">
+		select
+		<include refid="Basework_Column_List" />
+		from workers_info  
+		<where>
+		1=1
+		<if test="time != null">
+		 and time like #{time,jdbcType=VARCHAR}
+		</if>
+		
+		<if test="workername != null">
+				and workername like "%"#{workername,jdbcType=VARCHAR}"%"
+		</if>
+			<if test="tableNo != null">
+				and tableNo like "%"#{tableNo,jdbcType=VARCHAR}"%"
+		</if>
+		</where>
+		order by createTime desc  
+		<if test="start!=null and count!=null">
+                    limit #{start,jdbcType=INTEGER},#{count,jdbcType=INTEGER}
+            </if> 
+	</select>
+	 <select id="totalselect" resultType="int" parameterType="com.hou.erp.pojo.WorkInfo">
+            select count(*) from   workers_info 
+            <where>
+		1=1
+		<if test="time != null">
+		 and time like #{time,jdbcType=VARCHAR}
+		</if>
+		
+		<if test="workername != null">
+				and workername like "%"#{workername,jdbcType=VARCHAR}"%"
+		</if>
+			<if test="tableNo != null">
+				and tableNo like "%"#{tableNo,jdbcType=VARCHAR}"%"
+		</if>
+		</where>     
+     </select>
+	<insert id="insertWorker" parameterType="com.hou.erp.pojo.WorkInfo">
+		INSERT INTO workers_info
+		(workername,tableNo,time,startCode,endCode,weight,price,total,remark,createTime)
+		values (#{workername,jdbcType=VARCHAR},
+		#{tableNo,jdbcType=VARCHAR},
+		#{time,jdbcType=VARCHAR},
+		#{startCode,jdbcType=VARCHAR},
+		#{endCode,jdbcType=VARCHAR},
+		#{weight,jdbcType=VARCHAR},
+		#{price,jdbcType=VARCHAR},
+		#{total,jdbcType=VARCHAR},
+		#{remark,jdbcType=VARCHAR},
+		#{createTime,jdbcType=VARCHAR})
+		
+	</insert>
+	<sql id="Base_Column_List">
+		id, user_name, password, age
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseWorkResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Basework_Column_List" />
+		from workers_info
+		where id = #{id,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		workers_info
+		where id = #{id,jdbcType=INTEGER}
+	</delete>
+
+	<update id="updateByPrimaryKey" parameterType="com.hou.erp.pojo.WorkInfo">
+		update
+		workers_info
+		set
+		workername = #{workername,jdbcType=VARCHAR},
+		tableNo = #{tableNo,jdbcType=VARCHAR},
+		time = #{time,jdbcType=VARCHAR},
+		startCode = #{startCode,jdbcType=VARCHAR},
+		endCode = #{endCode,jdbcType=VARCHAR},
+		weight = #{weight,jdbcType=VARCHAR},
+		price = #{price,jdbcType=VARCHAR},
+		total = #{total,jdbcType=VARCHAR},
+		remark = #{remark,jdbcType=VARCHAR},
+		createTime = #{createTime,jdbcType=VARCHAR}
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+</mapper>
