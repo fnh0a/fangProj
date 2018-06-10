@@ -135,6 +135,7 @@ public class UserController {
     	String month=request.getParameter("month");
     	return "redirect:showUser?year="+year+"&month="+month;
     }
+    //practice
 	private WorkInfo setWorkInfo(HttpServletRequest request) {
 		WorkInfo workInfo = new WorkInfo();
         workInfo.setWorkername(request.getParameter("workername"));
