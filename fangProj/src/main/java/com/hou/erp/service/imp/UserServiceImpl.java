@@ -23,31 +23,32 @@ public class UserServiceImpl implements IUserService {
 		return this.userDao.selectByPrimaryKey(id); 
 	}
 
-	@Override
+	
+	
 	public List<WorkInfo> getInfoList() {
 		// TODO Auto-generated method stub
 		return this.userDao.selectAllInfo(); 
 	}
 
-	@Override
+	
 	public int insertWorker(WorkInfo workInfo) {
 		// TODO Auto-generated method stub
 		return this.userDao.insertWorker(workInfo);
 	}
 
-	@Override
+	
 	public int deleteData(int id) {
 		// TODO Auto-generated method stub
 		return this.userDao.deleteByPrimaryKey(id);
 	}
 
-	@Override
+	
 	public int updateWorker(WorkInfo workInfo) {
 		// TODO Auto-generated method stub
 		return this.userDao.updateByPrimaryKey(workInfo);
 	}
 
-	@Override
+	
 	public List<WorkInfo> getInfoListByMonth(WorkInfo workInfo,Page page) {
 		// TODO Auto-generated method stub
 		Map<String, Object> map=new HashMap<String, Object>();
@@ -59,19 +60,19 @@ public class UserServiceImpl implements IUserService {
 		return this.userDao.selectInfoByMonth(map); 
 	}
 
-	@Override
+	 
 	public int total() {
 		// TODO Auto-generated method stub
 		return this.userDao.total();
 	}
 
-	@Override
+	 
 	public List<WorkInfo> getInfoList(Page page) {
 		// TODO Auto-generated method stub
 		return this.userDao.selectAllInfo(page);
 	}
 
-	@Override
+	 
 	public int totalselect(WorkInfo workInfo) {
 		// TODO Auto-generated method stub
 		return this.userDao.totalselect(workInfo);
