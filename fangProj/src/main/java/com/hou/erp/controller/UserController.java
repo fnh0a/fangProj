@@ -138,6 +138,7 @@ public class UserController {
     //practice
 	private WorkInfo setWorkInfo(HttpServletRequest request) {
 		WorkInfo workInfo = new WorkInfo();
+    //practice2
         workInfo.setWorkername(request.getParameter("workername"));
         workInfo.setTableNo(request.getParameter("tableNo"));
         workInfo.setTime(request.getParameter("time"));
