@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>查看详细信息</title>
+<title>View Record Detail</title>
 <style type="text/css">
 body {
 	font-family: "微软雅黑"
@@ -21,17 +21,18 @@ body {
 .head {
 	font-size: 16px;
 	font-weight: bold;
-	color: #0099FF
+	color: #ffffff;
+	algin:left
 }
 
 .headInfo {
 	font-size: 12px;
-	color: #0099FF;
+	color: #ffffff;
 	padding-left: 15px
 }
 
 .txtBorder {
-	border: 1px solid #66CCFF
+	border: 1px solid #ffffff
 }
 
 .myButton {
@@ -53,81 +54,82 @@ body {
 	color: green;
 	font-size: 10px;
 }
+ 
 </style>
 </head>
-<body>
+<body background='${pageContext.request.contextPath }/img/bg7.jpg'>
 	<form action="<%=path%>/user/showUser" method="post">
 		<table  align="center"  >
-			<tr>
-				<td colspan="3" class="title" align="center">详细信息</td>
+			<tr style="color: #ffffff">
+				<td colspan="3" class="title" align="center">Record Detail</td>
 			</tr>
 			 
 			<tr>
 				<td>&nbsp;</td>
-				<td class="head">姓名:</td>
-				<td>${workInfo.workername}</td>
+				<td class="head">Name:</td>
+				<td style="color: #ffffff">${workInfo.workername}</td>
 			</tr>
 
 
 			<tr>
 				<td>&nbsp;</td>
-				<td class="head">表号:</td>
-				<td>${workInfo.tableNo}</td>
+				<td class="head">Meter NO:</td>
+				<td style="color: #ffffff">${workInfo.tableNo}</td>
 				<td></td>
 			</tr>
 
 
 			<tr>
 				<td>&nbsp;</td>
-				<td class="head">时间:</td>
-				<td>${workInfo.time}</td>
+				<td class="head">Record Time:</td>
+				<td style="color: #ffffff">${workInfo.time}</td>
 				<td><span id="sp_repwd" class="spanErr"></span></td>
 			</tr>
 
 
 			<tr>
 				<td>&nbsp;</td>
-				<td class="head">起码:</td>
-				<td >${workInfo.startCode}</td>
+				<td class="head">Start Reading:</td>
+				<td  style="color: #ffffff">${workInfo.startCode}</td>
 			</tr>
 
 
 			<tr>
 				<td>&nbsp;</td>
-				<td class="head">止码 :</td>
-				<td>${workInfo.endCode}</td>
+				<td class="head">End Reading :</td>
+				<td style="color: #ffffff">${workInfo.endCode}</td>
 
 			</tr>
 			<tr>
 				<td>&nbsp;</td>
-				<td class="head">吨位:</td>
-				<td>${workInfo.weight}</td>
-			</tr>
-
-
-			<tr>
-				<td>&nbsp;</td>
-				<td class="head">单价:</td>
-				<td>${workInfo.price}</td>
+				<td class="head">Usage:</td>
+				<td style="color: #ffffff">${workInfo.weight}</td>
 			</tr>
 
 
 			<tr>
 				<td>&nbsp;</td>
-				<td class="head">金额:</td>
-				<td>${workInfo.total}</td>
+				<td class="head">Unit Price:</td>
+				<td style="color: #ffffff">${workInfo.price}</td>
+			</tr>
+
+
+			<tr>
+				<td>&nbsp;</td>
+				<td class="head">Total Amount:</td>
+				<td  align="left" style="color: #ffffff">${workInfo.total}</td>
 
 			</tr>
 
 			<tr>
 				<td>&nbsp;</td>
-				<td class="head">备注:</td>
-				<td>${workInfo.remark}</td>
+				<td class="head">Remarks:</td>
+				<td align="left" style="color: #ffffff">${workInfo.remark}</td>
 			</tr>
 			<tr>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
-				<td><input type="button" value="返回"    onclick="javascript:history.back(-1);" />
+				<td><input type="button" value="Back"  style="color:#5B5B5B"    onclick="javascript:history.back(-1);" />
 					</td>
 			</tr>
 

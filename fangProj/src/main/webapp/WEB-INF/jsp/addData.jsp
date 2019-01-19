@@ -8,11 +8,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>新增数据</title>
+<title>Add Record</title>
 <style type="text/css">
 		body{font-family: "微软雅黑"}
 		.title{font-size: 24px;font-weight: bold;}
-		.head{font-size: 16px;font-weight: bold;color: #0099FF}
+		.head{font-size: 16px;font-weight: bold;color:  #ffffff}
 		.headInfo{font-size: 12px;color: #0099FF;padding-left: 15px}
 		.txtBorder{border: 1px solid #66CCFF}
 		.myButton{
@@ -24,7 +24,7 @@
 	</style>
 	<style>
   body {font-size:12px}
-  td {text-align:center}
+  td {text-align:right}
   h1 {font-size:26px;}
   h4 {font-size:16px;}
   em {color:#999; margin:0 10px; font-size:11px; display:block}
@@ -190,31 +190,31 @@ function HS_setDate(inputObj){
 	    	var startCode = document.getElementById("startCode").value;
 	    	var endCode = document.getElementById("endCode").value;
 	    	/* if (!startCode) {
-	    		alert('起码是必填项！');
+	    		alert('Start Reading is a required item！');
 	    		return false;
 			}
 	    	if (!endCode) {
-	    		alert('止码是必填项！');
+	    		alert(' End Reading is a required item！');
 	    		return false;
 			} */
 	    	if(startCode&&endCode){
 	    		var use=endCode-startCode;
 	    		if(use<0){
-	    			alert('止码不能小于起码！');
+	    			alert("End Reading can't be less than Start Reading！");
 	    			return false;
 	    		}
 	    		var weight =  document.getElementById("weight").value=use;
 	    		if(use>48){
 	    			//document.getElementById("price").value=3;
 	    			document.getElementById("total").value=weight*document.getElementById("price").value;
-	    			if(document.getElementById("remark").value=='每年保底48吨'){
+	    			if(document.getElementById("remark").value=='A minimum of 48 tons per year'){
 	    				document.getElementById("remark").value='';
 	    			}
 	    		}
 				if(use<=48){
 	    			document.getElementById("price").value='';
 	    			document.getElementById("total").value=144;
-	    			document.getElementById("remark").value='每年保底48吨';
+	    			document.getElementById("remark").value='A minimum of 48 tons per year';
 	    		}
 	    		
 	    	}
@@ -234,31 +234,31 @@ function HS_setDate(inputObj){
 	    	var weight = document.getElementById("weight").value;
 	    	var price = document.getElementById("price").value;
 	    	if(!workername){
-	    		alert("姓名是必填y项！");
+	    		alert("Name is a required item！");
 	    		return false;
 	    	}
 	    	 if(!tableNo){
-	    		alert("表号是必填项！");
+	    		alert("Meter NO is a required item！");
 	    		return false;
 	    	} 
 	    	if(!time){
-	    		alert("时间是必填项！");
+	    		alert("Record Time is a required item！");
 	    		return false;
 	    	}
 	    	if(!startCode){
-	    		alert("起码是必填项！");
+	    		alert("Start Reading is a required item！");
 	    		return false;
 	    	}
 	    	if(!endCode){
-	    		alert("止码是必填项！");
+	    		alert(" End Reading is a required item！");
 	    		return false;
 	    	}
 	    	if(!weight){
-	    		alert("吨位是必填项！");
+	    		alert("Usage is a required item！");
 	    		return false;
 	    	}
 	    	if(!total){
-	    		alert("金额是必填项！");
+	    		alert("Total Amount is a required item！");
 	    		return false;
 	    	}
 	    	
@@ -306,7 +306,7 @@ function HS_setDate(inputObj){
 			var timed=""+y1+m1+d1;
 			
 			if (timed>dd) {
-				alert("时间不能大于今天！"); 
+				alert("Record Time can't be greater than today！"); 
 				return false;
 			}
 			var timed1=""+y1+"-"+m1+"-"+d1;
@@ -320,7 +320,7 @@ function HS_setDate(inputObj){
 	    		
 				var ch = txt.toLowerCase().charAt(i);	//转换小写后取出每个字符，是否满足范围
 				if( !(ch>='0'&&ch<='9') ){
-					alert("'"+txt+"' 必须是纯数字！");
+					alert("'"+txt+"' Must be numbers！");
 					return false;
 				}
 			}
@@ -329,19 +329,19 @@ function HS_setDate(inputObj){
 	    </script>
 	
 </head>
-<body>
+<body background='${pageContext.request.contextPath }/img/bg7.jpg'>
 <form action="<%=path %>/user/addData" method="post"  onsubmit="return retcheckall()" >
     <table border="0" align="center">
-    	<tr>
-    		<td colspan="3" class="title">新增数据
+    	<tr style="color: #ffffff">
+    		<td colspan="3" class="title">Add Record
     		 <input id="year"  name="year" type="hidden">
              <input id="month" name="month"  type="hidden">
     		</td>
 	   	</tr>
  
-    	<tr>
+    	<tr >
     		<td>&nbsp;</td>
-    		<td class="head">姓名</td>
+    		<td class="head">Name:</td>
     		<td>
     			<input  id="workername" name="workername" class="txtBorder"  />
     		</td>
@@ -350,7 +350,7 @@ function HS_setDate(inputObj){
 	   	
 	   	<tr>
     		<td>&nbsp;</td>
-    		<td class="head">表号</td>
+    		<td class="head">Meter NO:</td>
     		<td>
     			<input id="tableNo" name="tableNo" class="txtBorder" />
     		</td>
@@ -362,7 +362,7 @@ function HS_setDate(inputObj){
 	   	
 	   	<tr>
     		<td>&nbsp;</td>
-    		<td class="head">时间</td>
+    		<td class="head">Record Time:</td>
     		<td>
     			<input  id="time" name="time" class="txtBorder" readonly="readonly"   onfocus="HS_setDate(this)"/>
     		</td>
@@ -371,51 +371,51 @@ function HS_setDate(inputObj){
 	   		   	
     	<tr>
     		<td>&nbsp;</td>
-    		<td class="head"> 起码</td>
+    		<td class="head">Start Reading:</td>
     		<td class="head"><input id="startCode" name="startCode" class="txtBorder" onblur="check()" />    		</td>
 	   	</tr>
 	   
     	<tr>
     		<td>&nbsp;</td>
-    		<td class="head"> 止码 </td>
+    		<td class="head">End Reading:</td>
     		<td>
     			<input id="endCode" name="endCode" class="txtBorder" onblur="check()"/>
     			
     			</td>
-		 <td><input type="button" onclick="check()" value="计算"/></td>
+		 <td><input type="button" onclick="check()" style="color:#5B5B5B" value="Calculate"/></td>
 	   	</tr>
 	   	<tr>
     		<td>&nbsp;</td>
-    		<td class="head">吨位</td>
+    		<td class="head">Usage:</td>
     		<td><input  id="weight" name="weight" class="txtBorder" onblur="check1()"/></td>
 	   	</tr>
 	   
 
     	<tr>
     		<td>&nbsp;</td>
-    		<td class="head"> 单价</td>
+    		<td class="head">Unit Price:</td>
     		<td><input id="price" name="price" class="txtBorder" value="3" onblur="check()"/></td>
 	   	</tr>
 	    
 	   	
 	   	<tr>
     		<td>&nbsp;</td>
-    		<td class="head"> 金额</td>
+    		<td class="head">Total Amount:</td>
     		<td><input id="total" name="total" class="txtBorder"   /></td>
     		 
 	   	</tr>
 	  
 	   	 	<tr>
     		<td>&nbsp;</td>
-    		<td class="head">备注</td>
+    		<td class="head">Remarks:</td>
     		<td><textarea id="remark" name="remark" class="txtBorder" ></textarea></td>
 	   	</tr>
     	<tr>
     		<td>&nbsp;</td>
     		<td>&nbsp;</td>
     		<td>
-    			<input type="submit" value="保存" onclick="return checkall()"   />
-    			<input type="button" value="取消" onclick="javascript:history.back(-1);"/>
+    			<input type="submit" value="Save" onclick="return checkall()" style="color:#5B5B5B"  />
+    			<input type="button" value="Cancel" onclick="javascript:history.back(-1);" style="color:#5B5B5B"/>
 			</td>
 	   	</tr>
     </table>

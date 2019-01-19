@@ -38,7 +38,15 @@
 	<listener>
 		<listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
 	</listener>
-
+<servlet-mapping>
+ 	<servlet-name>default</servlet-name>
+ 	<url-pattern>*.css</url-pattern>
+ 	<url-pattern>*.js</url-pattern>
+ 	<url-pattern>*.png</url-pattern>
+ 	<url-pattern>*.gif</url-pattern>
+ 	<url-pattern>*.jpg</url-pattern>	
+</servlet-mapping>
+ 
 	<!-- Spring MVC servlet -->
 	<servlet>
 		<servlet-name>SpringMVC</servlet-name>

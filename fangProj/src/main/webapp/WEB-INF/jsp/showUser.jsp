@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"
-	contentType="text/html;charset=utf-8"%>
+	contentType="text/html;charset=utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 	String path = request.getContextPath();
@@ -7,11 +7,11 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 
-<head >
-<title>首页</title>
+<head  >
+<title>HomePage</title>
 <style type="text/css">
-.head{color: #0099FF}
-.txtBorder{border: 1px solid #66CCFF}
+.head{color: #ADADAD}
+.txtBorder{border: 1px solid #ffffff}
 </style>
 
 	<script type="text/javascript">
@@ -117,12 +117,12 @@
 	}
 	</script>
 </head>
-<body onload="sss()">
-<div align="center"><span 	style="font-size: 24px;font-weight: bold;"	
->首页</span>|
- <a href="<%=path %>/user/toAddData">新增数据</a> |
-  <a href="<%=path %>/user/showAll?year=${year}&month=${month}">查看所有数据</a> 
-    <a href="<%=path %>/user/login">退出</a> 
+<body onload="sss()" background='${pageContext.request.contextPath }/img/bg7.jpg' >
+<div align="center"><span style="font-size: 24px;font-weight: bold;"	
+style="color: #ffffff">HomePage </span>|
+ <a href="<%=path %>/user/toAddData" style="color: #ffffff"> To Add Record </a> |
+  <a href="<%=path %>/user/showAll?year=${year}&month=${month}" style="color: #ffffff"> To View All Records</a> |
+    <a href="<%=path %>/user/login" style="color: #ffffff"> Exit</a> 
   <br>  <br>
    <input id="selectedYear" value="${year}"   type="hidden" >
   <input id="selectedMon" value="${month}"   type="hidden"  >
@@ -131,54 +131,54 @@
   <form action="<%=path %>/user/showUser" method="post"   >
     <input id="clearStatus"  name="clearStatus"   value="${clearStatus}" type="hidden"    >
     <input id="isclear"  name="isclear" type="hidden"  >
-   <span class="head">姓名</span><input class="txtBorder" id="workername" name="workername" value="${workername}" type="text">
-   <span class="head">表号</span> <input class="txtBorder" id="tableNo" name="tableNo" value="${tableNo}" type="text">
-  <select  class="head" id="year" name="year"    >
+   <span class="head">Name</span><input class="txtBorder" id="workername" name="workername" value="${workername}" type="text">
+   <span class="head">Meter NO</span> <input class="txtBorder" id="tableNo" name="tableNo" value="${tableNo}" type="text">
+  <select  class="head" id="year" name="year" style="color: #000000"   >
   </select> &nbsp; &nbsp; &nbsp; &nbsp;
-  <select class="head" id="month" name="month"  >
+  <select class="head" id="month" name="month"  style="color: #000000" >
   </select>  &nbsp; &nbsp; &nbsp; &nbsp;
-  <input type="submit" value="查询">
-   <input type="submit" value="刷新">
-   <input type="button" value="重置" onclick="clear1()" />
+  <input type="submit" value="Search" style="color:#5B5B5B">
+   <input type="submit" value="Refresh" style="color: #5B5B5B" >
+   <input type="button" value="Reset" onclick="clear1()" style="color: #5B5B5B"/>
 </form>
  
 <br>
 <table border="0"  align="center" width="85%"
-		cellpadding="0" cellspacing="0"  >
-<tr class="head"><th>序号</th><th align="left">姓名</th><th align="left">表号 </th>
-<th align="left">时间</th><th align="left"> 起码 </th><th align="left">止码 </th><th align="left">吨位 </th>
-<th align="left">单价 </th>
-<th align="left">金额 </th><th align="left">备注</th><th align="left">操作</th></tr>
+		cellpadding="1" cellspacing="0"  >
+<tr class="head"><th> Serial NO </th><th align="left">Name </th><th align="left">Meter NO </th>
+<th align="left">Record Time </th><th align="left"> Start Reading  </th><th align="left"> End Reading   </th><th align="left"> Usage  </th>
+<th align="left">Unit Price </th>
+<th align="left">Total Amount </th><th align="left">Remarks  </th><th align="left"> Operation</th></tr>
  <c:forEach var="mcBean" items="${mcList}" varStatus="mcStatus"> 
- <tr><td colspan="11" class="head">--------------------------------------------------------------------------------------------------------------------------------------------------------------------------</td> </tr>
- <tr>
- 	<td align="center">${mcStatus.index+1+page.start}</td>
- 	<td align="left">${mcBean.workername}</td>
- 	<td align="left">${mcBean.tableNo}</td>
- 	<td align="left">${mcBean.time}</td>
- 	<td align="left">${mcBean.startCode}</td>
- 	<td align="left">${mcBean.endCode}</td>
+ <tr><td colspan="11" class="head">--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</td> </tr>
+ <tr style="color: #ffffff">
+ 	<td align="center"   >${mcStatus.index+1+page.start}</td>
+ 	<td align="left"  >${mcBean.workername}</td>
+ 	<td align="left" >${mcBean.tableNo}</td>
+ 	<td align="left" >${mcBean.time}</td>
+ 	<td align="left"  > ${mcBean.startCode}</td>
+ 	<td align="left"  >${mcBean.endCode}</td>
  	<td align="left">${mcBean.weight}</td>
  	<td align="left">${mcBean.price}</td>
  	<td align="left">${mcBean.total}</td>
  	<td align="left">${mcBean.remark}</td>
  	<td>
- 	<a href="<%=path %>/user/delete?id=${mcBean.id}&year=${year}&month=${month}" onclick="return confirm('确定要删除[${mcBean.workername}]吗')">删除</a>
- 	<a href="<%=path %>/user/toUpdateData?id=${mcBean.id}"  >修改</a>
- 	<a href="<%=path %>/user/viewData?id=${mcBean.id}"  >查看</a>
- 	<a href="<%=path %>/user/toCreateInvoice?id=${mcBean.id}"  >生成发票</a>
+ 	<a href="<%=path %>/user/delete?id=${mcBean.id}&year=${year}&month=${month}" style="color: #ffffff" onclick="return confirm('Are you sure to delete[${mcBean.workername}]?')">Delete</a>
+ 	<a href="<%=path %>/user/toUpdateData?id=${mcBean.id}"  style="color: #ffffff"> |Update</a>
+ 	<a href="<%=path %>/user/viewData?id=${mcBean.id}"  style="color: #ffffff"> |View</a>
+ 	<a href="<%=path %>/user/toCreateInvoice?id=${mcBean.id}" style="color: #ffffff" > |Create Invoice</a>
  	</td>
  </tr>
  
  </c:forEach>
- <tr><td colspan="11"class="head" >--------------------------------------------------------------------------------------------------------------------------------------------------------------------------</td> </tr>
+ <tr><td colspan="11"class="head" >--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</td> </tr>
  </table>
  <div style="text-align:center" class="head">
-      <a href="?start=0">首  页</a>
-		<a href="?start=${page.start-page.count<0?0:page.start-page.count}">上一页</a>
-		<a href="?start=${page.start+page.count>page.last?page.last:page.start+page.count}">下一页</a>
-		<a href="?start=${page.last}">末  页</a>
-		每页显示${page.count}条   共${page.total}条记录
+      <a href="?start=0" style="color: #ffffff">FirstPage</a> | 
+		<a href="?start=${page.start-page.count<0?0:page.start-page.count}" style="color: #ffffff">Page up </a> |
+		<a href="?start=${page.start+page.count>page.last?page.last:page.start+page.count}" style="color: #ffffff">Page down</a> |
+		<a href="?start=${page.last}" style="color: #ffffff">End page</a> |
+		<span style="color: #ffffff"> ${page.count} Records Per Page |  ${page.total} Records In All</span>
     </div>
  </div>
 </body>
