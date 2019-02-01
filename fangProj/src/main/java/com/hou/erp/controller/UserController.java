@@ -84,7 +84,7 @@ public class UserController {
     	workInfo.setTableNo(tableNo);
     	 List<WorkInfo> wlist = this.userService.getInfoListByMonth(workInfo,page);
     	 logger.info("wlist"+wlist.size());
-        //user.setUserName("侯芳媛");
+        //user.setUserName("fangni");
         
      /*try {
 		//	String des = new String(user.getUserName().getBytes("ISO-8859-1"),"GBK");
